@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #7159c1;
+  --secondary-color: #f7df1e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  background-color: #fff;
+  width: 100%;
+  padding: 32px;
+  text-align: center;
+}
+
+.links {
+  font-size: 22;
+}
+
+.links a + a {
+  margin-left: 32px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #777;
+  position: relative;
+}
+
+.links a.active {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.links a:hover {
+  color: var(--primary-color);
+}
+
+/* só conseguimos dar o efeito em um elemento de box, por isso usaremos pseudoelementos ao invés de só colocar text-decoration */
+.links a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+}
+
+.links a:hover::after {
+  width: 100%;
+  /* onde vai ser a transição, duração, timing, delay*/
+  transition: width 300ms cubic-bezier(0.35, -0.2, 0.2, 0.87);
+}
+
+/*==CARD==*/
+
+.card {
+  background-color: #fff;
+  width: 800px;
+  min-height: 400px;
+  margin: 45px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4);
+  animation: up 800ms ease-out;
+}
+
+@keyframes up {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*==DETAILS==*/
+
+.details {
+  padding: 32px;
+}
+
+.details .item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+}
+
+/* pega o ultimo  */
+.details .item:last-child {
+  border: none;
+}
+/* entra na div de cada um e pega o primeiro elemento*/
+.details h3,
+.details .item div:nth-child(1) {
+  font-size: 14px;
+  line-height: 24px;
+  color: #777;
+  letter-spacing: 0.7px;
+  font-weight: normal;
+}
+
+/* entra na div de cada um e pega o segundo elemento*/
+.details .item div:nth-child(2) {
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.details h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.details .item span {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--secondary-color);
+  border-radius: 16px;
+  color: #777;
+  margin-right: 4px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/*==FORM==*/
+
+input,
+select {
+  width: 100%;
+  outline: none;
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+input[type='radio'] {
+  width: initial;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+button[type='submit'],
+a.button {
+  padding: 8px 32px;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+button[type='submit']:hover {
+  filter: brightness(93%);
+  transition: all 400ms;
+}
+
+a.button {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+
+#form-delete button[type='submit'] {
+  margin-top: 8px;
+  background-color: lightcoral;
+}
+
+/* INDEX INSTRUCTORS*/
+.table-container {
+  display: block;
+  padding: 40px;
+  box-sizing: border-box;
+}
+.table-container table {
+  border-spacing: 0;
+}
+
+.table-container tr th {
+  text-align: left;
+}
+
+td,
+th {
+  padding: 16px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+th {
+  text-transform: uppercase;
+  color: #777;
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+tbody tr td:first-child {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+
+tbody tr td:first-child span {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 3px 1px 6px -4px black;
+  border: 2px solid white;
+  background-position: center;
+  background-size: cover;
+}
+
+tbody tr td:last-child a,
+.table-container > a {
+  background-color: var(--primary-color);
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.table-container > a {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.table-container thead tr th:last-child,
+td:last-child {
+  text-align: center;
+}
+
+/*==FILTERS==*/
+
+.table-container .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.table-container .header a {
+  width: 120px;
+  margin: 0;
+}
+.table-container .header form button {
+  margin: 0;
+}
+
+.table-container .header form input {
+  border: 1px solid #eee;
+  padding: 4px 8px;
+  box-sizing: border-box;
+}
+.table-container .header form {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+}
+
+/*==PAGINATE==*/
+.table-container {
+  display: grid;
+  grid-template: 64px 1fr 16px /1fr;
+}
+
+.table-container .header {
+  margin: 0;
+  align-self: flex-start;
+}
+
+.table-container .pagination {
+  margin: 0;
+  align-self: flex-end;
+  justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-right: 16px;
+}
+.pagination a:hover {
+  filter: brightness(0.3);
+  border-bottom: 1px solid var(--primary-color);
+}

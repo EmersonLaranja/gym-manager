@@ -1,0 +1,63 @@
+<div class="item">
+  <div>Avatar URL</div>
+  <input placeholder="https://" type="url" name="avatar_url" value="{{member.avatar_url}}">
+</div>
+
+<div class="item">
+  <div>Name</div>
+  <input placeholder="Your name" type="text" name="name" value="{{member.name}}">
+</div>
+
+<div class="item">
+  <div>Email</div>
+  <input placeholder="Your email" type="email" name="email" value="{{member.email}}">
+</div>
+
+<div class="item">
+  <div>Birthdate</div>
+  <input type="date" name="birth" value="{{member.birth}}">
+</div>
+
+<div class="item">
+  <div>Gender</div>
+  <span ><input type="radio" name="gender" value="M" {% if member.gender=='M' %} checked="checked" {% endif %}>
+    Male</span>
+  <span ><input type="radio" name="gender" value="F" {% if member.gender=='F' %} checked="checked" {% endif %}>
+    Female</span>
+</div>
+
+<div class="item">
+  <div>Blood type</div>
+  <select name="blood">
+    <option value="A+" {%if member.blood=="A+"%} selected="selected" {%endif%}>A+</option>
+    <option value="A-" {%if member.blood=="A-"%} selected="selected" {%endif%}>A-</option>
+    <option value="B+" {%if member.blood=="B+"%} selected="selected" {%endif%}>B+</option>
+    <option value="B-" {%if member.blood=="B-"%} selected="selected" {%endif%}>B-</option>
+    <option value="AB+" {%if member.blood=="AB+"%} selected="selected" {%endif%}>AB+</option>
+    <option value="AB-" {%if member.blood=="AB-"%} selected="selected" {%endif%}>AB-</option>
+    <option value="O+" {%if member.blood=="O+"%} selected="selected" {%endif%}>O+</option>
+    <option value="O-" {%if member.blood=="O-"%} selected="selected" {%endif%}>O-</option>
+  </select>
+</div>
+
+<div class="item">
+  <div>Weight (kg)</div>
+  <input type="number" name="weight" value="{{member.weight}}">
+</div>
+
+<div class="item">
+  <div>Height (kg)</div>
+  <input type="number" name="height" value="{{member.height}}">
+</div>
+
+<div class="item">
+  <div>Instructor</div>
+  <select name="instructor">
+    {% for instructor in instructorsOptions %}
+      <option value="{{instructor.id}}" {%if member.instructor_id==instructor.id %} selected="selected" {%endif%}>{{instructor.name}}</option>
+    {% endfor %}
+
+  </select>
+</div>
+
+<button type="submit">Save</button>
